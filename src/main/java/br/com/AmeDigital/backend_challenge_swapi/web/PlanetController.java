@@ -1,7 +1,8 @@
-package br.com.AmeDigital.backend_challenge_swapi.domain.planets;
+package br.com.AmeDigital.backend_challenge_swapi.web;
 
-import br.com.AmeDigital.backend_challenge_swapi.domain.planets.dto.PlanetDTO;
-import br.com.AmeDigital.backend_challenge_swapi.domain.planets.model.Planet;
+import br.com.AmeDigital.backend_challenge_swapi.domain.planets.PlanetService;
+import br.com.AmeDigital.backend_challenge_swapi.dto.PlanetDTO;
+import br.com.AmeDigital.backend_challenge_swapi.domain.planets.Planet;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;

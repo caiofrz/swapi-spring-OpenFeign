@@ -1,4 +1,4 @@
-package br.com.AmeDigital.backend_challenge_swapi.domain.planets.dto;
+package br.com.AmeDigital.backend_challenge_swapi.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

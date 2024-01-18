@@ -1,4 +1,4 @@
-package br.com.AmeDigital.backend_challenge_swapi.domain.planets.model;
+package br.com.AmeDigital.backend_challenge_swapi.domain.planets;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

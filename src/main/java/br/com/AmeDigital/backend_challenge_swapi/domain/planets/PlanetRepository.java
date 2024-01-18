@@ -1,6 +1,5 @@
 package br.com.AmeDigital.backend_challenge_swapi.domain.planets;
 
-import br.com.AmeDigital.backend_challenge_swapi.domain.planets.model.Planet;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

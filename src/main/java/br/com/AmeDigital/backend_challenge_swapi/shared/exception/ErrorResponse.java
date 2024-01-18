@@ -1,4 +1,4 @@
-package br.com.AmeDigital.backend_challenge_swapi.domain.Exception;
+package br.com.AmeDigital.backend_challenge_swapi.shared.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

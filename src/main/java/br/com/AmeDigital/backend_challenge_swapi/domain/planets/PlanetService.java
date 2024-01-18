@@ -1,8 +1,7 @@
 package br.com.AmeDigital.backend_challenge_swapi.domain.planets;
 
-import br.com.AmeDigital.backend_challenge_swapi.domain.Exception.PlanetAlreadyCreatedException;
-import br.com.AmeDigital.backend_challenge_swapi.domain.Exception.PlanetNotFoundException;
-import br.com.AmeDigital.backend_challenge_swapi.domain.planets.model.Planet;
+import br.com.AmeDigital.backend_challenge_swapi.domain.planets.exceptions.PlanetAlreadyCreatedException;
+import br.com.AmeDigital.backend_challenge_swapi.domain.planets.exceptions.PlanetNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
