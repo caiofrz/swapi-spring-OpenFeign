@@ -28,7 +28,7 @@
 
 Clone o projeto:
 ```bash
-git clone http
+git clone https://github.com/caiofrz/swapi-spring-OpenFeign.git
 cd swapi-spring-OpenFeign
 ``````
 
@@ -117,7 +117,7 @@ Here you can list the main routes of your API, and what are their expected reque
 
 ## Funcionalidades
 
-- CRUD ds planetas
+- CRUD dos planetas
 - Consultas paginadas e ordenadas
 - Integração com API a pública do [Star Wars](https://swapi.dev/api/) usando Spring Cloud OpenFeign
 
