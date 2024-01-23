@@ -2,6 +2,7 @@ package br.com.AmeDigital.backend_challenge_swapi.shared.exception;
 
 import br.com.AmeDigital.backend_challenge_swapi.domain.planets.exceptions.PlanetAlreadyCreatedException;
 import br.com.AmeDigital.backend_challenge_swapi.domain.planets.exceptions.PlanetNotFoundException;
+import feign.FeignException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +39,14 @@ public class GlobalExceptionHandler {
     }
     return response(LocalDateTime.now(), HttpStatus.BAD_REQUEST, errors.toString(), request);
   }
+
+  @ExceptionHandler({FeignException.class, FeignException.FeignClientException.class})
+  public ResponseEntity<ErrorResponse> handleFeignException(FeignException ex,
+                                                            HttpServletRequest request) {
+    String message = "Erro na integração com StarWars API: " + ex.getMessage();
+    return response(LocalDateTime.now(), HttpStatus.valueOf(ex.status()), message, request);
+  }
+
 
   private ResponseEntity<ErrorResponse> response(final LocalDateTime timestamp,
                                                  final HttpStatus status,
