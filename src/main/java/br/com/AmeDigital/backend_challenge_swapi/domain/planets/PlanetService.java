@@ -6,6 +6,7 @@ import br.com.AmeDigital.backend_challenge_swapi.domain.client.SwapiResponse;
 import br.com.AmeDigital.backend_challenge_swapi.domain.planets.exceptions.PlanetAlreadyCreatedException;
 import br.com.AmeDigital.backend_challenge_swapi.domain.planets.exceptions.PlanetNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -54,8 +55,8 @@ public class PlanetService {
   public Planet update(String id, Planet planet) {
     Planet planetUpdate = this.repository.findById(id)
             .orElseThrow(() -> new PlanetNotFoundException("Planeta não encontrado!"));
-    planet.setAppearancesNumber(2);
-    return this.repository.save(planet);
+    BeanUtils.copyProperties(planet, planetUpdate);
+    return this.repository.save(planetUpdate);
   }
 
   @Transactional
