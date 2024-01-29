@@ -52,14 +52,6 @@ public class PlanetService {
   }
 
   @Transactional
-  public Planet update(String id, Planet planet) {
-    Planet planetUpdate = this.repository.findById(id)
-            .orElseThrow(() -> new PlanetNotFoundException("Planeta não encontrado!"));
-    BeanUtils.copyProperties(planet, planetUpdate);
-    return this.repository.save(planetUpdate);
-  }
-
-  @Transactional
   public void delete(String id) {
     this.repository.findById(id)
             .orElseThrow(() -> new PlanetNotFoundException("Planeta não encontrado!"));

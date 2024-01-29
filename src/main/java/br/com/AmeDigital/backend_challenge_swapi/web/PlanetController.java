@@ -43,16 +43,6 @@ public class PlanetController {
             body(this.service.save(planet));
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<Planet> update(@PathVariable String id,
-                                       @RequestBody @Valid PlanetDTO planetDTO) {
-    Planet planet = new Planet();
-    BeanUtils.copyProperties(planetDTO, planet);
-    return ResponseEntity.
-            status(HttpStatus.CREATED).
-            body(this.service.update(id, planet));
-  }
-
   @DeleteMapping("/{id}")
   public ResponseEntity<Planet> delete(@PathVariable String id) {
     this.service.delete(id);
