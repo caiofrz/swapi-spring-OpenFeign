@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Planets", description = "API Planets Resources")
 @RestController
+@CrossOrigin
 @RequestMapping("/planets")
 @RequiredArgsConstructor
 public class PlanetController {
