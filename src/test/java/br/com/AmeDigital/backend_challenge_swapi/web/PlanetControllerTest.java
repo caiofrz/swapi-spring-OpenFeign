@@ -1,8 +1,8 @@
 package br.com.AmeDigital.backend_challenge_swapi.web;
 
-import br.com.AmeDigital.backend_challenge_swapi.domain.client.ResultsResponse;
+import br.com.AmeDigital.backend_challenge_swapi.dto.ResultsResponseDTO;
 import br.com.AmeDigital.backend_challenge_swapi.domain.client.SwapiClient;
-import br.com.AmeDigital.backend_challenge_swapi.domain.client.SwapiResponse;
+import br.com.AmeDigital.backend_challenge_swapi.dto.SwapiResponseDTO;
 import br.com.AmeDigital.backend_challenge_swapi.domain.planets.Planet;
 import br.com.AmeDigital.backend_challenge_swapi.domain.planets.PlanetRepository;
 import br.com.AmeDigital.backend_challenge_swapi.domain.planets.PlanetService;
@@ -122,12 +122,12 @@ class PlanetControllerTest {
 
     when(planetRepository.existsByName(anyString())).thenReturn(false);
 
-    SwapiResponse swapiResponse = new SwapiResponse();
-    ResultsResponse resultsResponse = new ResultsResponse();
+    SwapiResponseDTO swapiResponseDTO = new SwapiResponseDTO();
+    ResultsResponseDTO resultsResponse = new ResultsResponseDTO();
     resultsResponse.setFilms(Collections.singletonList("Film 1"));
-    swapiResponse.setResults(Collections.singletonList(resultsResponse));
+    swapiResponseDTO.setResults(Collections.singletonList(resultsResponse));
 
-    when(client.getPlanetByName("Tatooine")).thenReturn(swapiResponse);
+    when(client.getPlanetByName("Tatooine")).thenReturn(swapiResponseDTO);
     when(planetService.save(any(Planet.class))).thenReturn(PLANET);
 
     mockMvc.perform(MockMvcRequestBuilders

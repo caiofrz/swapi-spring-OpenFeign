@@ -1,8 +1,8 @@
 package br.com.AmeDigital.backend_challenge_swapi.domain.planets;
 
-import br.com.AmeDigital.backend_challenge_swapi.domain.client.ResultsResponse;
+import br.com.AmeDigital.backend_challenge_swapi.dto.ResultsResponseDTO;
 import br.com.AmeDigital.backend_challenge_swapi.domain.client.SwapiClient;
-import br.com.AmeDigital.backend_challenge_swapi.domain.client.SwapiResponse;
+import br.com.AmeDigital.backend_challenge_swapi.dto.SwapiResponseDTO;
 import br.com.AmeDigital.backend_challenge_swapi.domain.planets.exceptions.PlanetAlreadyCreatedException;
 import br.com.AmeDigital.backend_challenge_swapi.domain.planets.exceptions.PlanetNotFoundException;
 import org.junit.jupiter.api.Test;
@@ -84,13 +84,13 @@ class PlanetServiceTest {
   @Test
   void testSaveSuccess() {
 
-    SwapiResponse swapiResponse = new SwapiResponse();
-    ResultsResponse resultsResponse = new ResultsResponse();
+    SwapiResponseDTO swapiResponseDTO = new SwapiResponseDTO();
+    ResultsResponseDTO resultsResponse = new ResultsResponseDTO();
     resultsResponse.setFilms(Collections.singletonList("Film 1"));
-    swapiResponse.setResults(Collections.singletonList(resultsResponse));
+    swapiResponseDTO.setResults(Collections.singletonList(resultsResponse));
 
     when(repository.existsByName(PLANET.getName())).thenReturn(false);
-    when(client.getPlanetByName(PLANET.getName())).thenReturn(swapiResponse);
+    when(client.getPlanetByName(PLANET.getName())).thenReturn(swapiResponseDTO);
     when(repository.insert(PLANET)).thenReturn(PLANET);
 
     Planet savedPlanet = service.save(PLANET);
@@ -135,13 +135,13 @@ class PlanetServiceTest {
   @Test
   void testSavePlanetNotFoundInSWAPI() {
 
-    SwapiResponse swapiResponse = new SwapiResponse();
-    ResultsResponse resultsResponse = new ResultsResponse();
+    SwapiResponseDTO swapiResponseDTO = new SwapiResponseDTO();
+    ResultsResponseDTO resultsResponse = new ResultsResponseDTO();
     resultsResponse.setFilms(List.of());
-    swapiResponse.setResults(List.of());
+    swapiResponseDTO.setResults(List.of());
 
     when(repository.existsByName(PLANET.getName())).thenReturn(false);
-    when(client.getPlanetByName(PLANET.getName())).thenReturn(swapiResponse);
+    when(client.getPlanetByName(PLANET.getName())).thenReturn(swapiResponseDTO);
 
     assertThrows(PlanetNotFoundException.class, () -> service.save(PLANET));
   }
@@ -158,13 +158,13 @@ class PlanetServiceTest {
   @Test
   void testIntegrationWithSwapiClient() {
 
-    SwapiResponse swapiResponse = new SwapiResponse();
-    ResultsResponse resultsResponse = new ResultsResponse();
+    SwapiResponseDTO swapiResponseDTO = new SwapiResponseDTO();
+    ResultsResponseDTO resultsResponse = new ResultsResponseDTO();
     resultsResponse.setFilms(Collections.singletonList("Film 1"));
-    swapiResponse.setResults(Collections.singletonList(resultsResponse));
+    swapiResponseDTO.setResults(Collections.singletonList(resultsResponse));
 
     when(repository.existsByName(PLANET.getName())).thenReturn(false);
-    when(client.getPlanetByName(PLANET.getName())).thenReturn(swapiResponse);
+    when(client.getPlanetByName(PLANET.getName())).thenReturn(swapiResponseDTO);
     when(repository.insert(PLANET)).thenReturn(PLANET);
 
     Planet savedPlanet = service.save(PLANET);

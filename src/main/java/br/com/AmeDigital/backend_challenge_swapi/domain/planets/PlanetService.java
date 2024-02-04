@@ -1,12 +1,11 @@
 package br.com.AmeDigital.backend_challenge_swapi.domain.planets;
 
-import br.com.AmeDigital.backend_challenge_swapi.domain.client.ResultsResponse;
+import br.com.AmeDigital.backend_challenge_swapi.dto.ResultsResponseDTO;
 import br.com.AmeDigital.backend_challenge_swapi.domain.client.SwapiClient;
-import br.com.AmeDigital.backend_challenge_swapi.domain.client.SwapiResponse;
+import br.com.AmeDigital.backend_challenge_swapi.dto.SwapiResponseDTO;
 import br.com.AmeDigital.backend_challenge_swapi.domain.planets.exceptions.PlanetAlreadyCreatedException;
 import br.com.AmeDigital.backend_challenge_swapi.domain.planets.exceptions.PlanetNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -39,8 +38,8 @@ public class PlanetService {
     if (this.repository.existsByName(planet.getName()))
       throw new PlanetAlreadyCreatedException("Este planeta já está cadastrado!");
 
-    SwapiResponse response = this.swapiClient.getPlanetByName(planet.getName());
-    List<ResultsResponse> results = response.getResults();
+    SwapiResponseDTO response = this.swapiClient.getPlanetByName(planet.getName());
+    List<ResultsResponseDTO> results = response.getResults();
 
     if (results.isEmpty())
       throw new PlanetNotFoundException("Este planeta não pertence ao universo Star Wars!");
