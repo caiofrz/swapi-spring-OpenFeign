@@ -38,7 +38,7 @@ public class PlanetController {
   })
   @Parameters({
           @Parameter(name = "page", description = "Page number, starting with 0"),
-          @Parameter(name = "size", description = "Itens number for page, default = 5"),
+          @Parameter(name = "size", description = "Itens number for page"),
           @Parameter(name = "sort,direction", description = "Order Attribute, Order Direction")
   })
   @GetMapping
